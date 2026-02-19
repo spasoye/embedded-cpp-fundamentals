@@ -1,0 +1,48 @@
+/ {
+	aliases {
+		led1 = &led1;
+		led2 = &led2;
+		sw0 = &button0;
+		sw1 = &button1;
+	};
+
+
+	buttons {
+		compatible = "gpio-keys";
+
+		button0: button_0 {
+			gpios = <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "Push button switch 0";
+		};
+
+		button1: button_1 {
+			gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "Push button switch 1";
+		};
+	};
+
+	leds {
+		led1: led_1 {
+			gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
+			label = "Green LED 1";
+		};
+		led2: led_2 {
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+			label = "Blue LED 2";
+		};
+	};
+
+	/* Board already defines board_cdc_acm_uart as console
+	 * via cdc_acm_serial.dtsi - no need to override here.
+	 * CONFIG_CDC_ACM_SERIAL_INITIALIZE_AT_BOOT auto-inits it.
+	 */
+	/* chosen {
+		zephyr,console = &cdc_acm_uart0;
+	}; */
+};
+
+/* &zephyr_udc0 {
+	cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+	};
+}; */
