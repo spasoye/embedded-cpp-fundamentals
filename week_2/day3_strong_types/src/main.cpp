@@ -2,6 +2,7 @@
 #include <zephyr/sys/printk.h>
 #include "time_units.hpp"
 #include "temperature_units.hpp"
+#include <array>
 
 void delay(Milliseconds ms) {
     k_msleep(ms.value());
